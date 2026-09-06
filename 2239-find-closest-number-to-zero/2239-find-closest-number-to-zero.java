@@ -4,15 +4,12 @@ class Solution
     {
         int closest = nums[0];
 
-        for (int i = 1; i < nums.length; i++)
+        for (int num : nums)
         {
-            if (Math.abs(nums[i]) < Math.abs(closest))
+            if (Math.abs(num) < Math.abs(closest) ||
+                Math.abs(num) == Math.abs(closest) && num > closest)
             {
-                closest = nums[i];
-            }
-            else if (Math.abs(nums[i]) == Math.abs(closest) && nums[i] > closest)
-            {
-                closest = nums[i];
+                closest = num;
             }
         }
 
