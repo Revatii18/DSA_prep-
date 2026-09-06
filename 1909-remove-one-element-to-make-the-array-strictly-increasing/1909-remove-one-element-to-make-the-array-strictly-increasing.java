@@ -1,30 +1,27 @@
 class Solution {
     public boolean canBeIncreasing(int[] nums) {
 
-        for (int remove = 0; remove < nums.length; remove++) {
+        int remove = 0;
 
-            boolean increasing = true;
-            int previous = Integer.MIN_VALUE;
+        for (int i = 1; i < nums.length; i++) {
 
-            for (int i = 0; i < nums.length; i++) {
-
-                if (i == remove) {
-                    continue;
-                }
-
-                if (previous >= nums[i]) {
-                    increasing = false;
-                    break;
-                }
-
-                previous = nums[i];
+            if (nums[i - 1] < nums[i]) {
+                continue;
             }
 
-            if (increasing) {
-                return true;
+            remove++;
+
+            if (remove > 1) {
+                return false;
+            }
+
+            if (i == 1 || nums[i - 2] < nums[i]) {
+                nums[i - 1] = nums[i];
+            } else {
+                nums[i] = nums[i - 1];
             }
         }
 
-        return false;
+        return true;
     }
 }
