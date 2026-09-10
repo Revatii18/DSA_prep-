@@ -2,22 +2,20 @@ class Solution
 {
     public List<Integer> majorityElement(int[] nums) 
     {
-        List<Integer> list = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();  
+        int candidate1 = 0 ;
+        int candidate2 = 0 ;
 
-        int candidate1 = 0;
-        int candidate2 = 0;
+        int count1 = 0 ;
+        int count2 = 0 ;
 
-        int count1 = 0;
-        int count2 = 0;
-
-        // Find two possible candidates
-        for (int i = 0; i < nums.length; i++)
+        for (int i = 0 ; i < nums.length ; i++)
         {
-            if (nums[i] == candidate1)
+            if(nums[i]==candidate1)
             {
                 count1++;
             }
-            else if (nums[i] == candidate2)
+            else if (nums[i]==candidate2)
             {
                 count2++;
             }
@@ -29,22 +27,22 @@ class Solution
             else if (count2 == 0)
             {
                 candidate2 = nums[i];
-                count2 = 1;
+                count2 = 1 ;
             }
-            else
+
+            else 
             {
-                count1--;
+                count1-- ;
                 count2--;
             }
         }
 
-        // Verify the candidates
-        count1 = 0;
-        count2 = 0;
+        count1 = 0 ; 
+        count2 = 0 ;
 
-        for (int num : nums)
+        for (int num: nums)
         {
-            if (num == candidate1)
+            if(num == candidate1)
             {
                 count1++;
             }
@@ -52,18 +50,18 @@ class Solution
             {
                 count2++;
             }
+        
         }
-
-        if (count1 > nums.length / 3)
-        {
+           if (count1 > nums.length / 3 )
+           {
             list.add(candidate1);
-        }
+           }  
 
-        if (count2 > nums.length / 3)
+           if (count2 > nums.length / 3)
         {
             list.add(candidate2);
-        }
+        }  
+        return list ;   
 
-        return list;
-    }
+}  
 }
