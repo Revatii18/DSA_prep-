@@ -2,24 +2,21 @@ class Solution
 {
     public List<Integer> majorityElement(int[] nums) 
     {
-        HashMap<Integer, Integer> map = new HashMap<>();
         List<Integer> list = new ArrayList<>();
 
-        // Step 1: Store frequency of every number
-        for (int i = 0; i < nums.length; i++)
-        {
-            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
-        }
+        Arrays.sort(nums);
 
-        // Step 2: Check which numbers occur more than n/3 times
-        for (Map.Entry<Integer, Integer> entry : map.entrySet())
-        {
-            int number = entry.getKey();
-            int count = entry.getValue();
+        int n = nums.length;
+        int window = n / 3;
 
-            if (count > nums.length / 3)
+        for (int i = 0; i + window < n; i++)
+        {
+            if (nums[i] == nums[i + window])
             {
-                list.add(number);
+                if (!list.contains(nums[i]))
+                {
+                    list.add(nums[i]);
+                }
             }
         }
 
