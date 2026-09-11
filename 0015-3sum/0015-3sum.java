@@ -11,7 +11,7 @@ class Solution {
             if (i > 0 && nums[i] == nums[i - 1]) continue;
 
             // Small optimization: if smallest possible sum > 0, no more triplets possible
-            if (nums[i] > 0) break;
+            //if (nums[i] > 0) break;
 
             int j = i + 1, k = n - 1;
             while (j < k) {
