@@ -3,12 +3,8 @@ class Solution
     public boolean rotateString(String s, String goal) 
     {
         if (s.length() != goal.length())
-        {
-            return false;
-        }
+    return false;
 
-        String ss = s + s;
-
-        return ss.contains(goal);
+return (s + s).contains(goal);
     }
 }  
