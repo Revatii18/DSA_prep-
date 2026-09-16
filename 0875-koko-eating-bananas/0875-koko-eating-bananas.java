@@ -4,30 +4,34 @@ class Solution
 {
     public int minEatingSpeed(int[] piles, int h)
     {
-        int left = 1;
-        int right = Arrays.stream(piles).max().getAsInt();
+         
+    int minSpeed = 1;
 
-        while (left <= right)
-        {
-            int mid = left + (right - left) / 2;
+    // Find max pile size
+    int maxSpeed = 0;
+    for (int pile : piles)
+      maxSpeed = Math.max(maxSpeed, pile);
 
-            long hours = 0;
+    // Binary search
+    while (minSpeed < maxSpeed) {
+      int mid = minSpeed + (maxSpeed - minSpeed) / 2;
 
-            for (int i = 0; i < piles.length; i++)
-            {
-                hours += (piles[i] + mid - 1) / mid;
-            }
-
-            if (hours <= h)
-            {
-                right = mid - 1;
-            }
-            else
-            {
-                left = mid + 1;
-            }
-        }
-
-        return left;
+      if (canEatInTime(piles, h, mid))
+        maxSpeed = mid;
+      else
+        minSpeed = mid + 1;
     }
+
+    return minSpeed;
+  }
+
+  private boolean canEatInTime(int[] piles, int h, int speed) {
+    int hours = 0;
+    for(int pile : piles)
+      hours += (int) Math.ceil((double) pile / speed);
+
+    return hours <= h;
+  }
+
 }
+    
