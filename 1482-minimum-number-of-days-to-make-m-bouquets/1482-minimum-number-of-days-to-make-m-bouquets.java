@@ -11,11 +11,17 @@ class Solution
    {
        return -1;
     }
-        int min = Arrays.stream(bloomDay).min().getAsInt();
-        int max = Arrays.stream(bloomDay).max().getAsInt();
+        int low = bloomDay[0];
+      int high = bloomDay[0];
 
-        int low = min ;
-        int high = max ;
+   for (int i = 1; i < bloomDay.length; i++)
+{
+    low = Math.min(low, bloomDay[i]);
+    high = Math.max(high, bloomDay[i]);
+}
+
+       // int low = min ;
+        //int high = max ;
         while (low <= high)
         {
             int mid = low + (high - low ) / 2 ;
