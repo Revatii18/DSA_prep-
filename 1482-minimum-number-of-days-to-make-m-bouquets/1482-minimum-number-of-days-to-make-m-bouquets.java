@@ -47,6 +47,10 @@ class Solution
             if (count == k)
             {
                 bouquets++;
+                  if (bouquets == m)
+         {
+             return true;
+         }
                 count = 0;
             }
         }
