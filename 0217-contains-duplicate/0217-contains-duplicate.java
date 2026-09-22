@@ -2,7 +2,8 @@ class Solution {
     public boolean containsDuplicate(int[] nums) 
     {
         HashSet<Integer> set = new HashSet<>();
-        for(int i = 0 ; i < nums.length ; i++)
+        int i = 0 ;
+        while(i < nums.length )
         {
               if (set.contains(nums[i]))
            {
@@ -10,6 +11,7 @@ class Solution {
           }
 
         set.add(nums[i]);
+        i++ ;
         }
 
         return false ;
