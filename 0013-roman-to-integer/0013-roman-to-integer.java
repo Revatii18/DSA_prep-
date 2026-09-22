@@ -11,21 +11,21 @@ class Solution
         map.put('D', 500);
         map.put('M', 1000);
 
-       int total = 0 ;
-        for (int i = 0 ; i < s.length() - 1 ; i++)
+      int total = 0 ;
+
+      for (int i = 0 ; i < s.length()-1 ; i++)
+      {
+        char ch = s.charAt(i);
+        int value = map.get(ch);
+        int nextValue  = map.get(s.charAt(i+1));
+
+        if (value < nextValue)
         {
-            char ch = s.charAt(i);
-            int value = map.get(ch);
-            int nextValue = map.get(s.charAt(i + 1));
-              if (value < nextValue)
-           {
-               total = total - value;
-            }
-         else
-          {
-              total = total + value;
-           }
-        } total = total + map.get(s.charAt(s.length() - 1));
+            total = total - value ;
+        }
+        else total = total + value ;
+      }
+      total =  total + map.get(s.charAt(s.length()-1));
         return total ;
     }
 }
