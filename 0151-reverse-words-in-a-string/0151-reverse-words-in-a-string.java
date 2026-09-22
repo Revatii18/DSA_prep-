@@ -1,26 +1,15 @@
 class Solution {
     public String reverseWords(String s) {
+        String[] words = s.split("\\s+");
+        StringBuilder res = new StringBuilder();
 
-        // Remove leading/trailing spaces
-        // and split into individual words
-        String[] words = s.trim().split("\\s+");
-
-        // Used to build the final answer
-        StringBuilder ans = new StringBuilder();
-
-        // Traverse words from right to left
-        for(int i = words.length - 1; i >= 0; i--) {
-
-            // Add current word
-            ans.append(words[i]);
-
-            // Add space between words
-            // but not after the last word
-            if(i != 0) {
-                ans.append(" ");
+        for (int i = words.length - 1; i >= 0; i--) {
+            res.append(words[i]);
+            if (i != 0) {
+                res.append(" ");
             }
         }
 
-        return ans.toString();
+        return res.toString().trim();
     }
 }
