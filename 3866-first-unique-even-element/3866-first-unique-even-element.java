@@ -1,24 +1,11 @@
-class Solution 
-{
-    public int firstUniqueEven(int[] nums) 
-    {
-        HashMap<Integer, Integer> map = new HashMap<>();
-
-        // Count frequency
-        for (int i : nums)
-        {
-            map.put(i, map.getOrDefault(i, 0) + 1);
+class Solution {
+    public int firstUniqueEven(int[] nums) {
+        int[] a = new int[101];
+        for(int n : nums) ++a[n];
+        for(int i = 0; i < nums.length; ++i) {
+            int n = nums[i];
+            if(a[n] == 1 && n % 2 == 0) return n;
         }
-
-        // Find first even number appearing once
-        for (int i : nums)
-        {
-            if (i % 2 == 0 && map.get(i) == 1)
-            {
-                return i;
-            }
-        }
-
         return -1;
     }
 }
