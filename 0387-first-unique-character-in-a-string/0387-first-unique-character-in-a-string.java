@@ -1,18 +1,18 @@
 class Solution {
-    public int firstUniqChar(String s) {
-        int[] freq = new int[26];
-
-        // Pass 1: count
-        for (int i = 0; i < s.length(); i++) {
-            freq[s.charAt(i) - 'a']++;
+    public int firstUniqChar(String s) 
+    {
+        int freq [] = new int [26];
+        for(int i = 0 ; i < s.length() ; i ++)
+        {
+            freq[s.charAt(i) - 'a']++ ;
         }
-
-        // Pass 2: first index with count 1
-        for (int i = 0; i < s.length(); i++) {
-            if (freq[s.charAt(i) - 'a'] == 1) {
-                return i;
+         for (int i = 0 ; i < s.length() ; i ++)
+         {
+            if( freq[s.charAt(i)-'a'] == 1 )
+            {
+                return i ;
             }
-        }
-        return -1;
-    }
+         }
+         return -1;
+    } 
 }
