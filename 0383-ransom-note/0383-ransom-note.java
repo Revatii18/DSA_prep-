@@ -12,7 +12,8 @@ class Solution {
         for (int i = 0; i < ransomNote.length(); i++) {
             char ch = ransomNote.charAt(i);
 
-            if (list.contains(ch)) {
+            if (list.contains(ch)) 
+            {
                 list.remove(Character.valueOf(ch));
             } else {
                 return false;
