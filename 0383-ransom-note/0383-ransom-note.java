@@ -1,25 +1,15 @@
-
-import java.util.*;
-
 class Solution {
     public boolean canConstruct(String ransomNote, String magazine) {
-        ArrayList<Character> list = new ArrayList<>();
+		if (ransomNote.length() > magazine.length()) return false;
+        int[] alphabets_counter = new int[26];
+        
+        for (char c : magazine.toCharArray())
+            alphabets_counter[c-'a']++;
 
-        for (int i = 0; i < magazine.length(); i++) {
-            list.add(magazine.charAt(i));
+        for (char c : ransomNote.toCharArray()){
+            if (alphabets_counter[c-'a'] == 0) return false;
+            alphabets_counter[c-'a']--;
         }
-
-        for (int i = 0; i < ransomNote.length(); i++) {
-            char ch = ransomNote.charAt(i);
-
-            if (list.contains(ch)) 
-            {
-                list.remove(Character.valueOf(ch));
-            } else {
-                return false;
-            }
-        }
-
         return true;
     }
 }
