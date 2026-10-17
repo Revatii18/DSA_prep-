@@ -3,29 +3,25 @@ import java.util.HashMap;
 class Solution {
     public int maxNumberOfBalloons(String text) {
 
-        HashMap<Character, Integer> map = new HashMap<>();
-        int smallest = Integer.MAX_VALUE;
+        HashMap<Character, Integer> need = new HashMap<>();
+        need.put('b', 1);
+        need.put('a', 1);
+        need.put('l', 2);
+        need.put('o', 2);
+        need.put('n', 1);
 
-        // Step 1: count every character
-        for (int i = 0; i < text.length(); i++) {
+        HashMap<Character, Integer> have = new HashMap<>();
+        for (int i = 0; i < text.length(); i++) 
+        {
             char ch = text.charAt(i);
-            map.put(ch, map.getOrDefault(ch, 0) + 1);
+            have.put(ch, have.getOrDefault(ch, 0) + 1);
         }
 
-        // Step 2: balloons each letter can support
-        int b = map.getOrDefault('b', 0) / 1;
-        int a = map.getOrDefault('a', 0) / 1;
-        int l = map.getOrDefault('l', 0) / 2;
-        int o = map.getOrDefault('o', 0) / 2;
-        int n = map.getOrDefault('n', 0) / 1;
-
-        // Step 3: smallest of the five
-        smallest = Math.min(smallest, b);
-        smallest = Math.min(smallest, a);
-        smallest = Math.min(smallest, l);
-        smallest = Math.min(smallest, o);
-        smallest = Math.min(smallest, n);
-
-        return smallest;
+        int answer = Integer.MAX_VALUE;
+        for (char key : need.keySet()) {
+       int canMake = have.getOrDefault(key, 0) / need.get(key);     // have-count of key / need-count of key
+    answer = Math.min(answer, canMake );    // compare with canMake
+}
+        return answer;
     }
 }
