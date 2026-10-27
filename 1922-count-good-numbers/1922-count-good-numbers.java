@@ -16,7 +16,7 @@ class Solution {
     {
         long result = 1;
 
-    while (exp > 0) 
+     while (exp > 0) 
     {
       if (exp % 2 == 1) 
       {
