@@ -1,9 +1,11 @@
 class Solution {
-    public int myAtoi(String s) {
+    public int myAtoi(String s) 
+    {
         int i = 0;
         int sign = 1;
         long  num = 0;      
 
+  if (s.length() == 0) return 0;
         // Step 2: Skip spaces
         while (i < s.length() && s.charAt(i) == ' ') 
         {
@@ -21,23 +23,22 @@ class Solution {
             sign = 1;
             i++;
         }
-
+        // add digits 
         while (i < s.length() && Character.isDigit(s.charAt(i)))
         {
-            int digit = s.charAt(i) - '0';  // 4 -- > 52 - 48 =  
+             int digit = s.charAt(i) - '0';  // 4 -- > 52 - 48 =  4 
              num = num * 10 + digit;
 
-if (num * sign > Integer.MAX_VALUE) {
-    return Integer.MAX_VALUE;
-}
-if (num * sign < Integer.MIN_VALUE) {
-    return Integer.MIN_VALUE;
-}
-            i++; 
-
-    
-
-      }
+      if (num * sign > Integer.MAX_VALUE) 
+      {
+        return Integer.MAX_VALUE;
+     }
+    if (num * sign < Integer.MIN_VALUE) 
+    {
+        return Integer.MIN_VALUE;
+    }
+      i++; 
+ }
        return (int) (num * sign);
     }
 }
