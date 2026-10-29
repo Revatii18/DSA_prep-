@@ -5,7 +5,7 @@ class Solution {
         int sign = 1;
         long  num = 0;      
 
-  if (s.length() == 0) return 0;
+      if (s.length() == 0) return 0;
         // Step 2: Skip spaces
         while (i < s.length() && s.charAt(i) == ' ') 
         {
