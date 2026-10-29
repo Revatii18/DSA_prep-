@@ -1,43 +1,43 @@
 class Solution {
     public int myAtoi(String s) {
-
-        int n = s.length();
         int i = 0;
+        int sign = 1;
+        long  num = 0;      
 
-        // 1. Skip leading spaces
-        while (i < n && s.charAt(i) == ' ') {
+        // Step 2: Skip spaces
+        while (i < s.length() && s.charAt(i) == ' ') 
+        {
             i++;
         }
 
-        // 2. Check sign
-        int sign = 1;
-
-        if (i < n && s.charAt(i) == '-') {
+        // Step 3: Handle sign
+        if (i < s.length() && s.charAt(i) == '-')
+        {
             sign = -1;
             i++;
         } 
-        else if (i < n && s.charAt(i) == '+') {
+        else if (i < s.length() && s.charAt(i) == '+') 
+        {
+            sign = 1;
             i++;
         }
 
-        // 3. Convert digits
-        int result = 0;
+        while (i < s.length() && Character.isDigit(s.charAt(i)))
+        {
+            int digit = s.charAt(i) - '0';  // 4 -- > 52 - 48 =  
+             num = num * 10 + digit;
 
-        while (i < n && s.charAt(i) >= '0' && s.charAt(i) <= '9') {
+if (num * sign > Integer.MAX_VALUE) {
+    return Integer.MAX_VALUE;
+}
+if (num * sign < Integer.MIN_VALUE) {
+    return Integer.MIN_VALUE;
+}
+            i++; 
 
-            int digit = s.charAt(i) - '0';
+    
 
-            // 4. Check overflow before multiplying by 10
-            if (result > Integer.MAX_VALUE / 10 ||
-                (result == Integer.MAX_VALUE / 10 && digit > 7)) {
-
-                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
-            }
-
-            result = result * 10 + digit;
-            i++;
-        }
-
-        return result * sign;
+      }
+       return (int) (num * sign);
     }
 }
