@@ -1,13 +1,13 @@
 class Solution {
     public int countConsistentStrings(String allowed, String[] words) 
     {
-        HashSet<Character> set = new HashSet<>();
+        boolean[] arr = new boolean[26];
         int count = 0;
 
         // Store allowed characters
         for (int i = 0; i < allowed.length(); i++)
         {
-            set.add(allowed.charAt(i));
+            arr[allowed.charAt(i) - 'a'] = true;
         }
 
         // Check each word
@@ -17,7 +17,7 @@ class Solution {
 
             for (int j = 0; j < words[i].length(); j++)
             {
-                if (!set.contains(words[i].charAt(j)))
+                if (!arr[words[i].charAt(j) - 'a'])
                 {
                     isValid = false;
                     break;
